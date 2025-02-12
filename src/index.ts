@@ -1,15 +1,14 @@
 import askUser from "./askUser.js";
 
-let songList = ["40'", "Outsiders", "Lucid Dreams"];
-let askSongListPosition: number;
+let songsTitles = ["40'", "Outsiders", "Lucid Dreams"];
 
-askSongListPosition = Number(
+let songTitlePosition = Number(
   askUser("De la llista, quin número de cançó vols? ")
 );
 
-const songDisplay =
-  askSongListPosition > 0 && askSongListPosition <= songList.length
-    ? songList.at(askSongListPosition - 1)
-    : `Error: en la teva llista hi ha ${songList.length} cançons, no pots seleccionar la posició ${askSongListPosition}`;
+const message =
+  songTitlePosition > 0 && songTitlePosition <= songsTitles.length
+    ? songsTitles.at(songTitlePosition - 1)
+    : `Error: en la teva llista hi ha ${songsTitles.length} cançons, no pots seleccionar la posició ${songTitlePosition}`;
 
-console.log(songDisplay);
+console.log(message);
