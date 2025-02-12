@@ -10,6 +10,6 @@ askSongListPosition = Number(
 const songDisplay =
   askSongListPosition > 0 && askSongListPosition <= songList.length
     ? songList.at(askSongListPosition - 1)
-    : "Error";
+    : `Error: en la teva llista hi ha ${songList.length} cançons, no pots seleccionar la posició ${askSongListPosition}`;
 
 console.log(songDisplay);
