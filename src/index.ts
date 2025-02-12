@@ -1,14 +1,29 @@
 import askUser from "./askUser.js";
 
-let songsTitles = ["40'", "Outsiders", "Lucid Dreams"];
+const songsTitles = ["40'", "Outsiders", "Lucid Dreams"];
 
-let songTitlePosition = Number(
+const songTitlePosition = Number(
   askUser("De la llista, quin número de cançó vols? ")
 );
 
-const message =
-  songTitlePosition > 0 && songTitlePosition <= songsTitles.length
-    ? songsTitles.at(songTitlePosition - 1)
-    : `Error: en la teva llista hi ha ${songsTitles.length} cançons, no pots seleccionar la posició ${songTitlePosition}`;
+if (Number.isNaN(songTitlePosition)) {
+  // programación defensiva: primero los errores
+  console.log("Siusplau, introdueix un número");
+  process.exit();
+}
 
-console.log(message);
+const isValidPosition =
+  songTitlePosition >= 1 && songTitlePosition <= songsTitles.length;
+
+if (!isValidPosition) {
+  console.log(
+    `Error: en la teva llista hi ha ${songsTitles.length} cançons, no pots seleccionar la posició ${songTitlePosition}`
+  );
+  process.exit();
+}
+
+const songTitleIndex = songTitlePosition - 1;
+
+const songTitle = songsTitles[songTitleIndex];
+
+console.log(songTitle);
